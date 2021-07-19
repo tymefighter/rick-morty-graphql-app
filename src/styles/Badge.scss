@@ -1,0 +1,32 @@
+.badge {
+    font-size: 1.5rem;
+    border: 0.2rem solid black;
+    border-radius: 5rem;
+}
+
+.badge--small {
+    font-size: 1rem;
+}
+
+.badge--medium {
+    font-size: 1.5rem;
+}
+
+.badge--large {
+    font-size: 1.7rem;
+}
+
+.badge--bad {
+    background-color: rgb(255, 197, 197);
+    color: black;
+}
+
+.badge--good {
+    background-color: rgb(175, 250, 175);
+    color: black;
+}
+
+.badge--neutral {
+    background-color: rgb(247, 247, 192);
+    color: black;
+}

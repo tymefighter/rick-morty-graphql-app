@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import client from "../client";
 import { GET_CHARACTERS } from "./query";
@@ -7,34 +7,30 @@ import ErrorComponent from "../Common/ErrorComponent";
 import CharacterCard from "./CharacterCard";
 
 import "../styles/Characters.scss";
-import { useEffect } from "react";
 
-const INIT_NUM_PAGES = 1;
-const NUM_PAGES_PER_QUERY = 1;
-
-function getCharacterPages(
-    startPage: number, numPages: number,
-    setCharacters: (characters: React.SetStateAction<CharacterPartial[]>) => void, 
-    setNextPage: (nextPage: React.SetStateAction<number>) => void, 
-    setErrorMessage: (errorMessage: React.SetStateAction<string | undefined>) => void
+function getCharacterPage(
+    page: number,
+    setCharacters: React.Dispatch<React.SetStateAction<CharacterPartial[]> >,
+    setNextPage: React.Dispatch<React.SetStateAction<number> >,
+    setErrorMessage: React.Dispatch<React.SetStateAction<string | undefined> >,
+    setLoading: React.Dispatch<React.SetStateAction<boolean> >
 ) {
-    console.log(startPage, numPages)
-    for(let page = 0;page < numPages;page++) {
-        client.query({
-            query: GET_CHARACTERS,
-            fetchPolicy: "cache-first",
-            variables: {
-                page: startPage + page
-            }
-        })
-        .then(result => {
-            const data = result.data.characters.results as CharacterPartial[];
-            setCharacters((prevCharacters) => [...prevCharacters, ...data]);
-        })
-        .catch(error => setErrorMessage(error.message));
-    }
+    setLoading(true);
+    client.query({
+        query: GET_CHARACTERS,
+        fetchPolicy: "cache-first",
+        variables: {
+            page: page
+        }
+    })
+    .then(result => {
+        const data = result.data.characters.results as CharacterPartial[];
+        setCharacters((prevCharacters) => [...prevCharacters, ...data]);
+        setLoading(false);
+    })
+    .catch(error => setErrorMessage(error.message));
 
-    setNextPage(startPage + numPages);
+    setNextPage(page => page + 1);
 }
 
 function Characters() {
@@ -42,26 +38,26 @@ function Characters() {
     const [characters, setCharacters] = useState<CharacterPartial[]>([]);
     const [nextPage, setNextPage] = useState(1);
     const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        getCharacterPages(
-            1, INIT_NUM_PAGES,
-            setCharacters, setNextPage, setErrorMessage
+        getCharacterPage(
+            1, setCharacters, setNextPage, setErrorMessage, setLoading
         );
-    }, [])
+    }, []);
 
     const scrollHandler = useCallback((event: React.UIEvent<HTMLDivElement, UIEvent>) => {
         const scrollTop = event.currentTarget.scrollTop;
         const scrollHeight = event.currentTarget.scrollHeight;
         const scrollFraction = scrollTop / scrollHeight;
 
-        // if(scrollFraction > 0.7) {
-        //     getCharacterPages(
-        //         nextPage, NUM_PAGES_PER_QUERY,
-        //         setCharacters, setNextPage, setErrorMessage
-        //     );
-        // }
-    }, [characters, nextPage]);
+        if(scrollFraction > 0.7 && !loading) {
+            console.log(nextPage);
+            getCharacterPage(
+                nextPage, setCharacters, setNextPage, setErrorMessage, setLoading
+            );
+        }
+    }, [loading, characters, nextPage]);
 
     if(errorMessage) return <ErrorComponent message={errorMessage} />;
 

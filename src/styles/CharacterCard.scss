@@ -19,7 +19,7 @@ $bg-color: rgb(29, 93, 153);
 .character-card__row {
     padding: 0 1rem;
     display: flex;
-    justify-content: space-between;
+    gap: 5%;
 }
 
 .character-card__name {

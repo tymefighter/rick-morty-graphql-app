@@ -10,6 +10,8 @@ import Location from './location/Location';
 import Episode from './episode/Episode';
 import Episodes from './episode/Episodes';
 
+import "./styles/App.scss";
+
 function App() {
     return (
         <ApolloProvider client={client}>
@@ -21,26 +23,28 @@ function App() {
                         {name: "Episodes", link: "/episodes"}
                     ]}
                 />
-                <Switch>
-                    <Route path="/characters/:characterId">
-                        <Character />
-                    </Route>
-                    <Route path="/characters">
-                        <Characters />
-                    </Route>
-                    <Route path="/locations/:locationId">
-                        <Location />
-                    </Route>
-                    <Route path="/locations">
-                        <Locations />
-                    </Route>
-                    <Route path="/episodes/:episodeId">
-                        <Episode />
-                    </Route>
-                    <Route path="/episodes">
-                        <Episodes />
-                    </Route>
-                </Switch>
+                <div className="app">
+                    <Switch>
+                        <Route path="/characters/:characterId">
+                            <Character />
+                        </Route>
+                        <Route path="/characters">
+                            <Characters />
+                        </Route>
+                        <Route path="/locations/:locationId">
+                            <Location />
+                        </Route>
+                        <Route path="/locations">
+                            <Locations />
+                        </Route>
+                        <Route path="/episodes/:episodeId">
+                            <Episode />
+                        </Route>
+                        <Route path="/episodes">
+                            <Episodes />
+                        </Route>
+                    </Switch>
+                </div>
             </BrowserRouter>
         </ApolloProvider>
     );
