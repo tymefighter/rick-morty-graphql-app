@@ -1,0 +1,24 @@
+.character-list {
+    border-collapse: collapse;
+
+    tr {
+        width: 100%;
+        border: 0.1rem solid black;
+        padding: 0.3rem;
+    }
+
+    th {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    td {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+}
+
+.character-list-table__image {
+    height: 8rem;
+    width: 8rem;
+}

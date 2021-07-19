@@ -24,7 +24,14 @@ export const GET_EPISODE = gql`
     query GetEpisode($id: ID) {
         episode(id: $id) {
             ...EpisodeFieldsPartial
-            characters
+            characters {
+                id
+                name
+                status
+                species
+                gender
+                image
+            }
         }
     }
     ${EPISODE_FIELDS_PARTIAL}
