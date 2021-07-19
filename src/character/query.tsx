@@ -6,7 +6,6 @@ const CHARACTER_FIELDS_PARTIAL = gql`
         name
         status
         species
-        type
         gender
         image
     }
@@ -24,13 +23,26 @@ export const GET_CHARACTERS = gql`
 `;
 
 export const GET_CHARACTER = gql`
-    query GetCharacter($id: ID) {
+    query GetCharacter($id: ID!) {
         character(id: $id) {
             ...CharacterFieldsPartial
-            origin
-            location
-            episode
+            origin {
+                id
+                name
+                dimension
+            }
+            location {
+                id
+                name
+                dimension
+            }
+            episode {
+                id
+                name
+                air_date
+                episode
+            }
         }
     }
-    ${GET_CHARACTERS}
+    ${CHARACTER_FIELDS_PARTIAL}
 `;

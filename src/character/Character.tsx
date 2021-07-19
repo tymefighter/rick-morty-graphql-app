@@ -2,8 +2,10 @@ import { useQuery } from "@apollo/client";
 import { useHistory, useParams } from "react-router-dom";
 import ErrorComponent from "../Common/ErrorComponent";
 import LoadingComponent from "../Common/LoadingComponent";
-import { Character } from "../types";
+import { Character as CharacterType } from "../types";
 import { GET_CHARACTER } from "./query";
+
+import "../styles/Character.scss";
 
 interface ParamsType {
     characterId: string;
@@ -23,17 +25,17 @@ function Character() {
 
     if(error) return <ErrorComponent message={error.message} />;
 
-    const character = data.character as Character;
+    const character = data.character as CharacterType;
 
     return (
         <div className="character">
             <div className="character__main">
-                <img src={character.image} alt={character.name} />
+                <img className="character__image" src={character.image} alt={character.name} />
                 <div className="character__main-info">
-                    <h1>{character.name}</h1>
-                    <p>Status: {character.status}</p>
-                    <p>Species: {character.species}</p>
-                    <p>Gender: {character.gender}</p>
+                    <h1 className="character__main-info-heading">{character.name}</h1>
+                    <p className="character__main-info-para">Status: {character.status}</p>
+                    <p className="character__main-info-para">Species: {character.species}</p>
+                    <p className="character__main-info-para">Gender: {character.gender}</p>
                 </div>
             </div>
             <div className="character__info">

@@ -3,7 +3,6 @@ export interface CharacterPartial {
     name: string;
     status: "Alive" | "Dead" | "unknown";
     species: string;
-    type: string;
     gender: "Female" | "Male" | "Genderless" | "unknown"
     image: string;
 };
@@ -18,7 +17,6 @@ export interface EpisodePartial {
 export interface LocationPartial {
     id: string;
     name: string;
-    type: string;
     dimension: string;
 };
 
