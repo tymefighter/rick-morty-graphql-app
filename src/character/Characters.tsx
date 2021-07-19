@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import client from "../client";
 import { GET_CHARACTERS } from "./query";
 import { CharacterPartial } from "../types";
+import ErrorComponent from "../Common/ErrorComponent";
+import CharacterCard from "./CharacterCard";
 
 function Characters() {
 
     const [characters, setCharacters] = useState<CharacterPartial[]>([]);
     const [nextPage, setNextPage] = useState(1);
-    const [error, setError] = useState("")
+    const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
 
     const scrollHandler = useCallback((event: React.UIEvent<HTMLDivElement, UIEvent>) => {
         const scrollTop = event.currentTarget.scrollTop;
@@ -27,15 +29,21 @@ function Characters() {
                 const data = result.data.characters.results as CharacterPartial[];
                 setCharacters([...characters, ...data]);
             })
-            .catch(error => setError(error.message));
+            .catch(error => setErrorMessage(error.message));
 
             setNextPage(nextPage + 1);
         }
     }, [nextPage]);
 
+    if(errorMessage) return <ErrorComponent message={errorMessage} />;
+
     return (
         <div onScroll={scrollHandler}>
-            
+            {characters.map(character => 
+                <Link to={`/characters/${character.id}`}>
+                    <CharacterCard character={character} />
+                </Link>
+            )}
         </div>
     );
 }
