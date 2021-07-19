@@ -1,7 +1,7 @@
 export interface CharacterPartial {
     id: string;
     name: string;
-    status: "Alive" | "Dead" | "Unknown";
+    status: "Alive" | "Dead" | "unknown";
     species: string;
     type: string;
     gender: "Female" | "Male" | "Genderless" | "unknown"

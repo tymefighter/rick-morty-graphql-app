@@ -51,7 +51,7 @@ function Characters() {
         const scrollHeight = event.currentTarget.scrollHeight;
         const scrollFraction = scrollTop / scrollHeight;
 
-        if(scrollFraction > 0.7 && !loading) {
+        if(scrollFraction > 0.5 && !loading) {
             console.log(nextPage);
             getCharacterPage(
                 nextPage, setCharacters, setNextPage, setErrorMessage, setLoading

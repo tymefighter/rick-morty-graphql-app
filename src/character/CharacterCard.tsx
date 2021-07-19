@@ -21,7 +21,7 @@ function CharacterCard({character, height, width}: CharacterCardProps) {
             badgeClass += " badge--bad";
             break;
 
-        case "Unknown":
+        case "unknown":
             badgeClass += " badge--neutral";
             break;
     }
