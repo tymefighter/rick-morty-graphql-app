@@ -1,4 +1,3 @@
-import './App.css';
 import client from "./client";
 import { ApolloProvider } from '@apollo/client';
 import { BrowserRouter, Switch, Route } from "react-router-dom"; 
@@ -15,7 +14,13 @@ function App() {
     return (
         <ApolloProvider client={client}>
             <BrowserRouter>
-                <Nav />
+                <Nav 
+                    nameToLink={[
+                        {name: "Characters", link: "/characters"},
+                        {name: "Locations", link: "/locations"},
+                        {name: "Episodes", link: "/episodes"}
+                    ]}
+                />
                 <Switch>
                     <Route path="/characters/:characterId">
                         <Character />

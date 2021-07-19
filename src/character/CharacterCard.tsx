@@ -24,9 +24,6 @@ function CharacterCard({character, height, width}: CharacterCardProps) {
             <p className="character-card__info">
                 Gender: {character.gender}
             </p>
-            <p className="character-card__info">
-                Type: {character.type}
-            </p>
         </div>
     );
 }

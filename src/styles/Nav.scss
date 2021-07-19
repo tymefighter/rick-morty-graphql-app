@@ -1,0 +1,30 @@
+$bg-color: rgb(188, 208, 238);
+$hover-bg-color: rgb(161, 199, 255);
+$active-bg-color: rgb(74, 115, 177);
+$text-color: rgb(224, 114, 11);
+$border-color: rgb(10, 10, 98);
+
+.nav {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    background-color: $bg-color;
+    border-bottom: 0.3rem solid $border-color;
+}
+
+.nav__link {
+    padding: 1rem 0;
+    text-decoration: none;
+    color: $text-color;
+    font-size: 2rem;
+    flex-grow: 1;
+    text-align: center;
+
+    &:hover {
+        background-color: $hover-bg-color;
+    }
+
+    &:active {
+        background-color: $active-bg-color;
+    }
+}
