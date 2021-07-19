@@ -1,0 +1,23 @@
+.episode {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.episode__main-info {
+    background-color: rgb(220, 247, 157);
+}
+
+.episode__main-info-heading {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.episode__main-info-para {
+    font-size: 1.5rem;
+    padding: 0 2rem;
+}
+
+.episode__info {
+    font-size: 1.7rem;
+}

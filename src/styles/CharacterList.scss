@@ -1,18 +1,20 @@
-.character-list {
+.character-list-table {
     border-collapse: collapse;
+    width: 100%;
 
     tr {
         width: 100%;
-        border: 0.1rem solid black;
         padding: 0.3rem;
     }
 
     th {
+        border: 0.1rem solid black;
         font-size: 1.5rem;
         text-align: center;
     }
 
     td {
+        border: 0.1rem solid black;
         font-size: 1.2rem;
         text-align: center;
     }

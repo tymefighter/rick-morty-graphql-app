@@ -1,0 +1,23 @@
+.location {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.location__main-info {
+    background-color: rgb(220, 247, 157);
+}
+
+.location__main-info-heading {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.location__main-info-para {
+    font-size: 1.5rem;
+    padding: 0 2rem;
+}
+
+.location__info {
+    font-size: 1.7rem;
+}

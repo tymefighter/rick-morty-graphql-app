@@ -1,0 +1,41 @@
+.episodes {
+    height: 85vh;
+    overflow: scroll;
+}
+
+.episode-table {
+    height: 100%;
+    border-collapse: collapse;
+    width: 100%;
+
+    tr {
+        height: 5rem;
+
+        &:hover {
+            background-color: rgb(219, 255, 219);
+            cursor: pointer;
+        }
+
+        &:active {
+            background-color: rgb(143, 240, 143);
+        }
+    }
+
+    thead {
+        background-color: rgb(21, 200, 255);
+    }
+
+    tbody {
+        text-align: center;
+    }
+
+    th {
+        border: 0.1rem solid black;
+        font-size: 1.7rem;
+    }
+
+    td {
+        border: 0.1rem solid black;
+        font-size: 1.3rem;
+    }
+}

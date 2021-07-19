@@ -6,6 +6,8 @@ import LoadingComponent from "../Common/LoadingComponent";
 import { Episode as EpisodeType } from "../types";
 import { GET_EPISODE } from "./query";
 
+import "../styles/Episode.scss";
+
 interface ParamsType {
     episodeId: string;
 };
@@ -32,8 +34,8 @@ function Episode() {
                 <p className="episode__main-info-para">Episode: {episode.episode}</p>
                 <p className="episode__main-info-para">Air Date: {episode.air_date}</p>
             </div>
-            <div className="location__info">
-                <h2 className="location__info-heading">Characters</h2>
+            <div className="episode__info">
+                <h2 className="episode__info-heading">Characters</h2>
                 <CharacterList characterList={episode.characters} />
             </div>
         </div>

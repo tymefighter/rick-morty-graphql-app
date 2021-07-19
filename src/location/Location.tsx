@@ -6,6 +6,8 @@ import LoadingComponent from "../Common/LoadingComponent";
 import { Location as LocationType } from "../types";
 import { GET_LOCATION } from "./query";
 
+import "../styles/Location.scss";
+
 interface ParamsType {
     locationId: string;
 };
