@@ -2,6 +2,7 @@ import './App.css';
 import client from "./client";
 import { ApolloProvider } from '@apollo/client';
 import { BrowserRouter, Switch, Route } from "react-router-dom"; 
+import Nav from './Common/Nav';
 
 import Characters from './character/Characters';
 import Character from './character/Character';
@@ -14,6 +15,7 @@ function App() {
     return (
         <ApolloProvider client={client}>
             <BrowserRouter>
+                <Nav />
                 <Switch>
                     <Route path="/characters/:characterId">
                         <Character />

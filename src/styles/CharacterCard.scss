@@ -1,0 +1,19 @@
+.character-card {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.character-card__img {
+    height: 30%;
+    width: 100%;
+}
+
+.character-card__name {
+    font-size: 1.7rem;
+}
+
+.character-card__info {
+    font-size: 1.3rem;
+}

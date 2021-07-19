@@ -6,6 +6,8 @@ import { CharacterPartial } from "../types";
 import ErrorComponent from "../Common/ErrorComponent";
 import CharacterCard from "./CharacterCard";
 
+import "../styles/CharacterCard.scss";
+
 function Characters() {
 
     const [characters, setCharacters] = useState<CharacterPartial[]>([]);
@@ -38,9 +40,10 @@ function Characters() {
     if(errorMessage) return <ErrorComponent message={errorMessage} />;
 
     return (
-        <div onScroll={scrollHandler}>
+        <div className="characters" onScroll={scrollHandler}>
             {characters.map(character => 
-                <Link to={`/characters/${character.id}`}>
+                <Link className="characters__character-link"
+                    to={`/characters/${character.id}`}>
                     <CharacterCard character={character} />
                 </Link>
             )}

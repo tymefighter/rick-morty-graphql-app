@@ -1,0 +1,12 @@
+.characters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 40rem;
+    grid-auto-columns: 60rem;
+    gap: 2rem;
+}
+
+.characters__character-link {
+    text-decoration: none;
+    color: black;
+}
