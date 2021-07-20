@@ -5,6 +5,15 @@
     tr {
         width: 100%;
         padding: 0.3rem;
+
+        &:hover {
+            background-color: rgb(255, 243, 210);
+            cursor: pointer;
+        }
+
+        &:active {
+            background-color: rgb(251, 220, 133);
+        }
     }
 
     th {

@@ -41,39 +41,47 @@ function Character() {
             <div className="character__info">
                 <h2 className="character__info-heading">Places</h2>
                 <table className="character__info-table">
-                    <tr>
-                        <th>Type</th>
-                        <th>Place</th>
-                        <th>Dimension</th>
-                    </tr>
-                    <tr>
-                        <td>Origin</td>
-                        <td>{character.origin.name}</td>
-                        <td>{character.origin.dimension}</td>
-                    </tr>
-                    <tr>
-                        <td>Location</td>
-                        <td>{character.location.name}</td>
-                        <td>{character.location.dimension}</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Place</th>
+                            <th>Dimension</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr onClick={() => history.push(`/locations/${character.origin.id}`)}>
+                            <td>Origin</td>
+                            <td>{character.origin.name}</td>
+                            <td>{character.origin.dimension}</td>
+                        </tr>
+                        <tr onClick={() => history.push(`/locations/${character.location.id}`)}>
+                            <td>Location</td>
+                            <td>{character.location.name}</td>
+                            <td>{character.location.dimension}</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
             <div className="character__info">
                 <h2 className="character__info-heading">Episodes</h2>
                 <table className="character__info-table">
-                    <tr>
-                        <th>Name</th>
-                        <th>Episode</th>
-                        <th>Air Date</th>
-                    </tr>
-                    {character.episode.map(episode => 
-                        <tr key={episode.id}
-                            onClick={() => {history.push(`/episodes/${episode.id}`)}}>
-                            <td>{episode.name}</td>
-                            <td>{episode.episode}</td>
-                            <td>{episode.air_date}</td>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Episode</th>
+                            <th>Air Date</th>
                         </tr>
-                    )}
+                    </thead>
+                    <tbody>
+                        {character.episode.map(episode => 
+                            <tr key={episode.id}
+                                onClick={() => {history.push(`/episodes/${episode.id}`)}}>
+                                <td>{episode.name}</td>
+                                <td>{episode.episode}</td>
+                                <td>{episode.air_date}</td>
+                            </tr>
+                        )}
+                    </tbody>
                 </table>
             </div>
         </div>

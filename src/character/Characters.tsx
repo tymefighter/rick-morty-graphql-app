@@ -54,7 +54,7 @@ function Characters() {
         const scrollFraction = scrollTop / scrollHeight;
 
         if(!numPagesQuery.loading && scrollFraction > 0.5 && !loading
-            && (numPagesQuery.data.episodes.info.pages as number) >= nextPage) {
+            && (numPagesQuery.data.characters.info.pages as number) >= nextPage) {
 
             getCharacterPage(
                 nextPage, setCharacters, setNextPage, setErrorMessage, setLoading

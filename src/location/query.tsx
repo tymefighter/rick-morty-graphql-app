@@ -21,7 +21,7 @@ export const GET_LOCATIONS = gql`
 `;
 
 export const GET_LOCATION = gql`
-    query GetLocation($id: ID) {
+    query GetLocation($id: ID!) {
         location(id: $id) {
             ...LocationFieldsPartial
             residents {

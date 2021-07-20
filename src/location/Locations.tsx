@@ -54,7 +54,7 @@ function Episodes() {
         const scrollFraction = scrollTop / scrollHeight;
 
         if(!numPagesQuery.loading && scrollFraction > 0.3 && !loading
-            && (numPagesQuery.data.episodes.info.pages as number) >= nextPage) {
+            && (numPagesQuery.data.locations.info.pages as number) >= nextPage) {
 
             getLocationPage(
                 nextPage, setLocations, setNextPage, setErrorMessage, setLoading
