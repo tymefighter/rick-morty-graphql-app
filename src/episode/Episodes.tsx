@@ -8,7 +8,7 @@ import { useQuery } from "@apollo/client";
 
 import "../styles/Episodes.scss";
 
-function getCharacterPage(
+function getEpisodePage(
     page: number,
     setEpisodes: React.Dispatch<React.SetStateAction<EpisodePartial[]> >,
     setNextPage: React.Dispatch<React.SetStateAction<number> >,
@@ -43,7 +43,7 @@ function Episodes() {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        getCharacterPage(
+        getEpisodePage(
             1, setEpisodes, setNextPage, setErrorMessage, setLoading
         );
     }, []);
@@ -57,9 +57,8 @@ function Episodes() {
 
         if(!numPagesQuery.loading && scrollFraction > 0.3 && !loading
             && (numPagesQuery.data.episodes.info.pages as number) >= nextPage) {
-
-            console.log(scrollFraction)
-            getCharacterPage(
+                
+            getEpisodePage(
                 nextPage, setEpisodes, setNextPage, setErrorMessage, setLoading
             );
         }

@@ -46,3 +46,13 @@ export const GET_CHARACTER = gql`
     }
     ${CHARACTER_FIELDS_PARTIAL}
 `;
+
+export const GET_NUM_CHARACTER_PAGES = gql`
+    query GetNumCharacterPages {
+        characters(page: 1) {
+            info {
+                pages
+            }
+        }
+    }
+`;

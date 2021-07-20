@@ -24,8 +24,25 @@ export const GET_LOCATION = gql`
     query GetLocation($id: ID) {
         location(id: $id) {
             ...LocationFieldsPartial
-            residents
+            residents {
+                id
+                name
+                status
+                species
+                gender
+                image
+            }
         }
     }
     ${LOCATION_FIELDS_PARTIAL}
+`;
+
+export const GET_NUM_LOCATION_PAGES = gql`
+    query GetNumLocationPages {
+        locations(page: 1) {
+            info {
+                pages
+            }
+        }
+    }
 `;
